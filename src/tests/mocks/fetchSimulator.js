@@ -1,5 +1,5 @@
 const product = require('./product');
-const search = require('./search').default.default;
+const search = require('./search');
 
 const ENDPOINTS = {
   PRODUCT: 'https://api.mercadolibre.com/items/MLB1405519561',
