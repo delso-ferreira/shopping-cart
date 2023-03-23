@@ -15,6 +15,20 @@
   height: 90px;
 }
 
+.loading{
+  color: black;
+  border: 2px solid;
+  width: 30%;
+  height: 30%;
+}
+
+.error{
+  color: black;
+  border: 2px solid;
+  width: 30%;
+  height: 30%;
+}
+
 .container-title {
   width: 75%;
 }
