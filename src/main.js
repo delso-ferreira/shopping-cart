@@ -20,6 +20,14 @@ const requisitionError = () => {
   container.appendChild(ReqError);
 };
 
+const getLoadOn = () => {
+  container.appendChild(loadText);
+};
+
+const getLoadOff = () => {
+  container.removeChild(loadText);
+};
+
 const productsReturn = () => {
   getProducts.forEach((element) => {
     const args = {
@@ -30,26 +38,15 @@ const productsReturn = () => {
     productList.appendChild(createProductElement(args));
   });
 };
-productsReturn();
-
-const getLoadOn = () => {
-  container.appendChild(loadText);
-};
-
-const getLoadOff = () => {
-  container.removeChild(loadText);
-};
 
 const handleLoad = async () => {
   getLoadOn();
-  if (getProducts === undefined) {
-    throw new Error('teste');
-  }
   try {
     await fetchProductsList('computador');
-    getLoadOff();
-  } catch (error) {
-    console.log(error.message);
+    productsReturn();
+  } catch (_error) {
+    requisitionError();
   }
+  getLoadOff();
 };
 handleLoad();

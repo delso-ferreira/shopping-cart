@@ -4,10 +4,8 @@ import computadorSearch from './mocks/search';
 
 // implemente seus testes aqui
 describe('Teste a função fetchProductsList', () => {
-  it('fetchProductsList é uma função', () => {
-    const functionType = fetchProductsList;
-    expect(functionType).toEqual(expect.any(Function));
-    // https://stackoverflow.com/questions/50818474/how-to-test-if-the-type-of-the-result-is-a-javascript-function-in-jest
+  it('fetchProductsList é uma função', () => {      
+    expect(typeof fetchProductsList).toBe('function')
   });
 
   it('fetch é chamado ao executar fetchProductsList', async () => {
@@ -23,4 +21,10 @@ describe('Teste a função fetchProductsList', () => {
   it('Testa se ao chamar a função fetchProductsList sem argumento retorna a mensagem de erro Termo de busca não informado', () => {
       expect(fetchProductsList()).rejects.toThrow('Termo de busca não informado')
   })
+
+  it('retorno com o argumento computador é uma estrutura igual ao computadorSearch', async () => {
+    await expect(fetchProductsList('computador')).resolves.toEqual(computadorSearch);
+    //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
+  });
+
 });
