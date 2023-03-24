@@ -1,17 +1,15 @@
 import { searchCep } from './helpers/cepFunctions';
-import { fetchProductsList } from './helpers/fetchFunctions';
+import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
 import { createProductElement } from './helpers/shopFunctions';
 import './style.css';
 
 const productList = document.querySelector('.products');
 const getProducts = await fetchProductsList('computador');
-console.log(getProducts);
 const loadText = document.createElement('h1');
 const container = document.querySelector('.container');
 loadText.classList.add('loading');
 loadText.innerHTML = 'carregando...';
 document.querySelector('.cep-button').addEventListener('click', searchCep);
-/* const apiURL = 'https://api.mercadolibre.com/sites/MLB/search?q='; */
 
 const requisitionError = () => {
   const ReqError = document.createElement('h2');
@@ -50,3 +48,4 @@ const handleLoad = async () => {
   getLoadOff();
 };
 handleLoad();
+
