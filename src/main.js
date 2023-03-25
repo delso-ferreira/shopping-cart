@@ -1,6 +1,7 @@
 import { searchCep } from './helpers/cepFunctions';
-import { fetchProductsList } from './helpers/fetchFunctions';
-import { createProductElement } from './helpers/shopFunctions';
+import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
+import { createProductElement, createCartProductElement } from './helpers/shopFunctions';
+import { getSavedCartIDs } from './helpers/cartFunctions';
 import './style.css';
 
 const productList = document.querySelector('.products');
@@ -42,9 +43,24 @@ const handleLoad = async () => {
   try {
     await fetchProductsList('computador');
     productsReturn();
-  } catch (_error) {
+  } catch (error) {
     requisitionError();
   }
   getLoadOff();
 };
 handleLoad();
+
+const sectionCart = document.querySelector('.cart__products');
+
+const loadCart = async () => {
+  const saveCart = getSavedCartIDs();
+  const promisseArray = saveCart.map(
+    (element) => fetchProduct(element),
+  );
+  const productData = await Promise.all(promisseArray);
+  productData.forEach((objeto) => {
+    const cartProduct = createCartProductElement(objeto);
+    sectionCart.appendChild(cartProduct);
+  });
+};
+loadCart();
