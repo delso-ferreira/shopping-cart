@@ -5,12 +5,12 @@ import { getSavedCartIDs } from './helpers/cartFunctions';
 import './style.css';
 
 const productList = document.querySelector('.products');
-const getProducts = await fetchProductsList('computador');
 const loadText = document.createElement('h1');
 const container = document.querySelector('.container');
 loadText.classList.add('loading');
 loadText.innerHTML = 'carregando...';
 document.querySelector('.cep-button').addEventListener('click', searchCep);
+const saveCart = getSavedCartIDs();
 
 const requisitionError = () => {
   const ReqError = document.createElement('h2');
@@ -27,23 +27,19 @@ const getLoadOff = () => {
   container.removeChild(loadText);
 };
 
-const productsReturn = () => {
-  getProducts.forEach((element) => {
-    const args = {
-      id: element.id,
-      title: element.title,
-      thumbnail: element.thumbnail,
-      price: element.price };
-    productList.appendChild(createProductElement(args));
-  });
-};
-
 const handleLoad = async () => {
   getLoadOn();
   try {
-    await fetchProductsList('computador');
-    productsReturn();
-  } catch (error) {
+    const getProducts = await fetchProductsList('computador');
+    getProducts.forEach((element) => {
+      const args = {
+        id: element.id,
+        title: element.title,
+        thumbnail: element.thumbnail,
+        price: element.price };
+      productList.appendChild(createProductElement(args));
+    });
+  } catch {
     requisitionError();
   }
   getLoadOff();
@@ -51,16 +47,21 @@ const handleLoad = async () => {
 handleLoad();
 
 const sectionCart = document.querySelector('.cart__products');
+const totalPriceElement = document.querySelector('.total-price');
+
+let sumCart = 0;
 
 const loadCart = async () => {
-  const saveCart = getSavedCartIDs();
   const promisseArray = saveCart.map(
     (element) => fetchProduct(element),
   );
   const productData = await Promise.all(promisseArray);
-  productData.forEach((objeto) => {
+  productData.map((objeto) => {
+    sumCart += objeto.price;
     const cartProduct = createCartProductElement(objeto);
     sectionCart.appendChild(cartProduct);
+    return productData;
   });
+  totalPriceElement.innerHTML = sumCart.toFixed(2);
 };
 loadCart();
