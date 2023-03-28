@@ -15,14 +15,14 @@
   height: 90px;
 }
 
-.loading{
+.loading {
   color: black;
   border: 2px solid;
   width: 30%;
   height: 30%;
 }
 
-.error{
+.error {
   color: black;
   border: 2px solid;
   width: 30%;
