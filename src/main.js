@@ -12,6 +12,7 @@ loadText.innerHTML = 'carregando...';
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 const saveCart = getSavedCartIDs();
 
+
 const requisitionError = () => {
   const ReqError = document.createElement('h2');
   ReqError.classList.add('error');
