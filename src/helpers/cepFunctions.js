@@ -27,7 +27,7 @@ export const getAddress = async (cep) => {
         }
       });
   } catch (error) {
-    cartAdress.innerHTML = 'CEP não encontrado';
+    cartAdress.innerHTML = error.message;
     console.log(error.message);
   }
 };

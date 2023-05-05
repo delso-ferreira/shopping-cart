@@ -6,25 +6,25 @@ import './style.css';
 
 const productList = document.querySelector('.products');
 const loadText = document.createElement('h1');
-const container = document.querySelector('.container');
+const apndBody = document.querySelector('body');
 loadText.classList.add('loading');
-loadText.innerHTML = 'carregando...';
+loadText.innerHTML = 'Carregando ⏳';
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 const saveCart = getSavedCartIDs();
 
 const requisitionError = () => {
   const ReqError = document.createElement('h2');
   ReqError.classList.add('error');
-  ReqError.innerHTML = 'Algum erro ocorreu, recarregue a página e tente novamente';
-  container.appendChild(ReqError);
+  ReqError.innerHTML = '❌ Algum erro ocorreu, recarregue a página e tente novamente ❌';
+  apndBody.appendChild(ReqError);
 };
 
 const getLoadOn = () => {
-  container.appendChild(loadText);
+  apndBody.appendChild(loadText);
 };
 
 const getLoadOff = () => {
-  container.removeChild(loadText);
+  apndBody.removeChild(loadText);
 };
 
 const handleLoad = async () => {
@@ -62,6 +62,6 @@ const loadCart = async () => {
     sectionCart.appendChild(cartProduct);
     return productData;
   });
-  totalPriceElement.innerHTML = sumCart.toFixed(2);
+  totalPriceElement.innerHTML = sumCart.toFixed(1);
 };
 loadCart();

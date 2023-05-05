@@ -16,13 +16,23 @@
 }
 
 .loading {
+  display: flex;
+  position: relative;
+  bottom: 350px;
+  flex-direction: column;
+  margin-left: 25%;
   color: black;
-  border: 2px solid;
+  text-align: center;
   width: 30%;
   height: 30%;
 }
 
 .error {
+  display: flex;
+  position: relative;
+  bottom: 350px;
+  flex-direction: column;
+  margin-left: 25%;
   color: black;
   border: 2px solid;
   width: 30%;
