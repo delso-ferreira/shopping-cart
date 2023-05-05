@@ -8,11 +8,11 @@ A aplicação foi desenvolvida utilizando JavaScript, HTML e CSS utilizando uma 
 
 Para executar a aplicação, siga os seguintes passos:
 
-<h2>Clone o repositório:</h2>
+<h3>Clone o repositório:</h3>
 
 git clone https://github.com/seu-usuario/nome-do-repositorio.git
 
-<h2>Acesse a pasta do projeto:</h2>
+<h3>Acesse a pasta do projeto:</h3>
 
 cd nome-do-repositorio
 Abra o arquivo index.html no seu navegador de preferência.
