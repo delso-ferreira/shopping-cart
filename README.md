@@ -10,7 +10,7 @@ Para executar a aplicação, siga os seguintes passos:
 
 <h3>Clone o repositório:</h3>
 
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/delso-ferreira/shopping-cart.git
 
 <h3>Acesse a pasta do projeto:</h3>
 
